@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Latihan jQuery </title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 30px;
+    }
+    #shape {
+      width: 100px;
+      height: 100px;
+      background: lightblue;
+      margin: 30px auto;
+      line-height: 100px;
+      text-align: center;
+      border-radius: 0; /* kotak awal */
+      transition: all 0.3s;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    
+  <div id="shape">Box</div>
+  <button id="besar">Perbesar</button>
+  <button id="kecil">Perkecil</button>
+  <button id="bulat">Bulatkan</button>
+  <button id="kotak">Kotakkan</button>
+  <button id="warna">Ubah Warna</button>
+  <script>
+    $(document).ready(function() {
+
+      // Perbesar shape
+      $("#besar").click(function() {
+        $("#shape").animate({
+          width: "+=50px",
+          height: "+=50px",
+          lineHeight: "+=50px"
+        }, 500);
+      });
+
+      // Perkecil shape
+      $("#kecil").click(function() {
+        $("#shape").animate({
+          width: "-=30px",
+          height: "-=30px",
+          lineHeight: "-=30px"
+        }, 500);
+      });
+
+      // Bulatkan shape
+      $("#bulat").click(function() {
+        $("#shape").css("border-radius", "50%");
+      });
+
+      // Kotakkan kembali
+      $("#kotak").click(function() {
+        $("#shape").css("border-radius", "0");
+      });
+
+      // Ubah warna random
+      $("#warna").click(function() {
+        let warna = "#" + Math.floor(Math.random()*16777215).toString(16);
+        $("#shape").css("background", warna);
+      });
+      
+      // Reset ke kondisi awal
+      $("#reset").click(function() {
+        $("#shape").css({
+          width: "100px",
+          height: "100px",
+          lineHeight: "100px",
+          background: "lightblue",
+          borderRadius: "0",
+          marginLeft: "0px"
+        }).text("Box");
+      });
+
+    });
+  </script>
+
+</body>
+</html>
