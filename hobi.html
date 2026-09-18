@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Hobi Mancing</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'anton': ['Anton', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'dark-bg': '#000000',
+                        'light-gray': '#f3f4f6',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #555; }
+        ::-webkit-scrollbar-thumb:hover { background: #888; }
+    </style>
+</head>
+<body class="bg-dark-bg text-white font-inter antialiased selection:bg-white selection:text-black md:pl-64">
+
+    <!-- NAVBAR / SIDEBAR -->
+    <nav class="fixed left-0 top-0 z-50 w-full md:w-64 h-auto md:h-screen bg-dark-bg/95 backdrop-blur-md border-b md:border-b-0 md:border-r border-gray-800">
+        <div class="h-full px-6 py-4 md:py-8 flex flex-row md:flex-col justify-between md:justify-start">
+            <!-- Navigation Desktop -->
+            <div class="hidden md:flex flex-col gap-2 mt-20 text-sm font-semibold tracking-wide">
+                <a href="index.html" class="group px-4 py-3 border-l-2 border-transparent hover:border-white hover:bg-white/5 hover:text-gray-300 transition">
+                    HOME
+                </a>
+                <a href="about.html" class="group px-4 py-3 border-l-2 border-transparent hover:border-white hover:bg-white/5 hover:text-gray-300 transition">
+                    ABOUT
+                </a>
+                <a href="hobi.html" class="group px-4 py-3 border-l-2 border-white bg-white/10 text-white transition">
+                    HOBBY
+                <a href="kalkulator.html" class="group px-4 py-3 border-l-2 border-transparent hover:border-white hover:bg-white/5 hover:text-gray-300 transition">
+                    TASK CALCULATOR
+                </a>
+                </a>
+            </div>
+
+            <!-- Location / Year -->
+            <div class="hidden md:block mt-auto text-xs">
+                <p>SIENCE. 2024</p>
+                <p class="text-gray-500">SINGARAJA, BALI</p>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="flex md:hidden gap-4 text-xs font-semibold tracking-wide items-center">
+                <a href="index.html" class="hover:text-gray-400 transition">HOME</a>
+                <a href="about.html" class="hover:text-gray-400 transition">ABOUT</a>
+                <a href="education.html" class="text-white font-bold transition">HOBBY</a>
+                <a href="kalkulator.html" class="text-white font-bold transition">CALCULATOR</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- HOBBY / FISHING SECTION -->
+    <section class="pt-28 pb-20 px-6 min-h-screen flex flex-col justify-center relative overflow-hidden">
+        
+        <div class="max-w-7xl mx-auto w-full relative z-10">
+            <!-- Header Title -->
+            <div class="mb-10">
+                <p class="text-sm font-semibold tracking-widest text-gray-400 uppercase">Aktivitas & Kegemaran</p>
+                <h1 class="font-anton text-5xl sm:text-6xl md:text-8xl tracking-wide uppercase leading-tight mt-2">
+                    FISHING HOBBY
+                </h1>
+            </div>
+
+            <!-- Grid Konten Gambar dan Deskripsi -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                
+                <!-- Display Gambar Mancing Tebing -->
+                <div class="md:col-span-7">
+                    <div class="relative w-full h-[350px] sm:h-[450px] rounded-2xl overflow-hidden border border-gray-800 group hover:border-gray-500 transition duration-500 shadow-2xl">
+                        <img src="./assets/images/image_750x_61b2ded1240b6.jpg" alt="Hobi Memancing Tebing" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="text-xs bg-yellow-400/20 text-yellow-400 border border-yellow-400/40 px-3 py-1 rounded-full font-semibold uppercase tracking-wider">Rock Fishing</span>
+                            <h3 class="text-xl font-bold mt-2">Spot Tebing Laut Pinggiran</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Hobi & Pengalaman -->
+                <div class="md:col-span-5 space-y-6">
+                    <div class="p-6 border border-gray-800 bg-white/5 rounded-2xl backdrop-blur-sm">
+                        <h3 class="font-anton text-2xl tracking-wide uppercase mb-2 text-white">Sensasi & Ketenangan</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Memancing di area tebing Uluwatu memberikan tantangan adrenalin sekaligus ketenangan. Menikmati pemandangan matahari terbenam sambil menunggu sambaran ikan menjadi momen terbaik untuk melepas penat dari aktivitas perkuliahan.
+                        </p>
+                    </div>
+
+                    <div class="p-6 border border-gray-800 bg-white/5 rounded-2xl backdrop-blur-sm space-y-4">
+                        <h4 class="text-xs font-semibold uppercase text-gray-400 tracking-widest">Informasi Hobi</h4>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-water text-yellow-400 text-lg"></i>
+                            <div>
+                                <p class="text-xs text-gray-500">Teknik Favorit</p>
+                                <p class="text-sm font-semibold">Rock Fishing & Bottom Fishing</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-location-dot text-yellow-400 text-lg"></i>
+                            <div>
+                                <p class="text-xs text-gray-500">Lokasi Favorit</p>
+                                <p class="text-sm font-semibold">Tebing Pesisir Pantai Bali</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Background Glow -->
+        <div class="absolute bottom-0 right-0 w-1/3 h-1/2 bg-yellow-400/5 blur-3xl rounded-full z-0 pointer-events-none"></div>
+    </section>
+
+</body>
+</html>
