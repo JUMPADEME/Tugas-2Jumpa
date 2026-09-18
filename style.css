@@ -1,0 +1,387 @@
+/* =========================================
+   BERANDA BIODATA
+========================================= */
+
+.bio-home {
+    position: relative;
+    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+
+    background: #061b55;
+    color: white;
+}
+
+
+/* BACKGROUND BIRU */
+
+.blue-bg {
+    position: absolute;
+    width: 65%;
+    height: 120%;
+    right: -5%;
+    top: -10%;
+
+    background: #2458ff;
+
+    transform: rotate(-8deg);
+    border-radius: 40% 0 0 40%;
+
+    z-index: 1;
+}
+
+
+/* TEXT ANGKA BESAR */
+
+.big-number {
+    position: absolute;
+
+    left: 3%;
+    top: 8%;
+
+    font-family: 'Anton', sans-serif;
+
+    font-size: clamp(180px, 28vw, 450px);
+    line-height: 0.72;
+
+    color: rgba(255, 255, 255, 0.18);
+
+    letter-spacing: -15px;
+
+    z-index: 2;
+
+    user-select: none;
+}
+
+
+/* HEADER */
+
+.bio-header {
+    position: absolute;
+
+    top: 30px;
+    left: 40px;
+    right: 40px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 4px;
+
+    z-index: 10;
+}
+
+
+/* FOTO */
+
+.profile-photo {
+    position: absolute;
+
+    right: 2%;
+    bottom: -5%;
+
+    width: min(52vw, 650px);
+    height: 90%;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    filter: drop-shadow(
+        -20px 20px 30px rgba(0,0,0,0.35)
+    );
+}
+
+
+/* INFORMASI */
+
+.bio-info {
+    position: absolute;
+
+    left: 5%;
+    bottom: 7%;
+
+    width: 45%;
+
+    z-index: 10;
+}
+
+
+/* LABEL */
+
+.bio-label {
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    font-weight: 800;
+
+    color: #dbe5ff;
+
+    margin-bottom: 10px;
+}
+
+
+/* NAMA */
+
+.bio-info h1 {
+    font-family: 'Anton', sans-serif;
+
+    font-size: clamp(65px, 8vw, 125px);
+
+    line-height: 0.82;
+
+    letter-spacing: -3px;
+
+    margin: 0 0 25px;
+
+    text-transform: uppercase;
+}
+
+.bio-info h1 span {
+    color: transparent;
+
+    -webkit-text-stroke: 2px white;
+}
+
+
+/* DESKRIPSI */
+
+.bio-description {
+    max-width: 500px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    color: #d7e0f5;
+
+    margin-bottom: 25px;
+}
+
+
+/* DETAIL */
+
+.bio-details {
+    display: flex;
+
+    gap: 30px;
+
+    margin-bottom: 25px;
+}
+
+.bio-details div {
+    display: flex;
+
+    flex-direction: column;
+
+    border-left: 2px solid rgba(255,255,255,0.4);
+
+    padding-left: 10px;
+}
+
+.bio-details small {
+    font-size: 9px;
+
+    color: #b9c7e8;
+
+    letter-spacing: 1px;
+}
+
+.bio-details strong {
+    font-size: 12px;
+
+    margin-top: 3px;
+}
+
+
+/* BUTTON */
+
+.bio-button {
+    display: inline-block;
+
+    padding: 13px 25px;
+
+    background: white;
+
+    color: #061b55;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.bio-button:hover {
+    background: #061b55;
+
+    color: white;
+
+    transform: translateX(5px);
+}
+
+
+/* SCROLL */
+
+.scroll-text {
+    position: absolute;
+
+    right: 35px;
+    bottom: 30px;
+
+    writing-mode: vertical-rl;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,0.7);
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .bio-home {
+        min-height: 100svh;
+        height: 100svh;
+    }
+
+    .blue-bg {
+        width: 100%;
+        height: 65%;
+
+        right: -15%;
+        top: -5%;
+
+        transform: rotate(-8deg);
+    }
+
+
+    .bio-header {
+        top: 25px;
+        left: 20px;
+        right: 20px;
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .big-number {
+        left: -5%;
+        top: 17%;
+
+        font-size: 180px;
+
+        letter-spacing: -8px;
+
+        color: rgba(255,255,255,0.18);
+    }
+
+
+    .profile-photo {
+        width: 90%;
+        height: 58%;
+
+        right: -5%;
+        top: 8%;
+
+        bottom: auto;
+    }
+
+
+    .bio-info {
+        left: 20px;
+        bottom: 30px;
+
+        width: calc(100% - 40px);
+    }
+
+
+    .bio-label {
+        font-size: 9px;
+        letter-spacing: 2px;
+
+        margin-bottom: 5px;
+    }
+
+
+    .bio-info h1 {
+        font-size: 57px;
+
+        line-height: 0.8;
+
+        letter-spacing: -1px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .bio-info h1 span {
+        -webkit-text-stroke: 1px white;
+    }
+
+
+    .bio-description {
+        font-size: 10px;
+
+        line-height: 1.45;
+
+        max-width: 330px;
+
+        margin-bottom: 12px;
+    }
+
+
+    .bio-details {
+        gap: 12px;
+
+        margin-bottom: 13px;
+    }
+
+
+    .bio-details small {
+        font-size: 7px;
+    }
+
+
+    .bio-details strong {
+        font-size: 8px;
+    }
+
+
+    .bio-button {
+        padding: 9px 17px;
+
+        font-size: 9px;
+    }
+
+
+    .scroll-text {
+        display: none;
+    }
+}
