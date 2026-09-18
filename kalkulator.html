@@ -1,153 +1,195 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kalkulator Responsif</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Task Calculator</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    .calculator {
-      background: #fff;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      width: 100%;
-      max-width: 350px;
-    }
-
-    .display {
-      width: 100%;
-      height: 60px;
-      font-size: 1.5rem;
-      text-align: right;
-      margin-bottom: 15px;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-      background: #f9f9f9;
-    }
-
-    .buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-
-    button {
-      padding: 20px;
-      font-size: 1.2rem;
-      border: none;
-      border-radius: 12px;
-      background: #e0e0e0;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background: #d6d6d6;
-    }
-
-    .operator {
-      background: #ff9f43;
-      color: #fff;
-    }
-
-    .operator:hover {
-      background: #e68a2e;
-    }
-
-    .equal {
-      background: #10ac84;
-      color: #fff;
-      grid-column: span 2;
-    }
-
-    .equal:hover {
-      background: #0e8f6f;
-    }
-
-    .clear {
-      background: #ee5253;
-      color: #fff;
-    }
-
-    .clear:hover {
-      background: #c0392b;
-    }
-
-    @media (max-width: 400px) {
-      .display {
-        font-size: 1.2rem;
-        height: 50px;
-      }
-
-      button {
-        padding: 15px;
-        font-size: 1rem;
-      }
-    }
-  </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'anton': ['Anton', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'dark-bg': '#000000',
+                        'light-gray': '#f3f4f6',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #555; }
+        ::-webkit-scrollbar-thumb:hover { background: #888; }
+    </style>
 </head>
-<body>
-  <div class="calculator">
-    <input type="text" class="display" id="display" disabled>
-    <div class="buttons">
-      <button class="clear" onclick="clearDisplay()">C</button>
-      <button onclick="appendValue('/')">/</button>
-      <button onclick="appendValue('*')">*</button>
-      <button onclick="appendValue('-')">-</button>
+<body class="bg-dark-bg text-white font-inter antialiased selection:bg-white selection:text-black md:pl-64">
 
-      <button onclick="appendValue('7')">7</button>
-      <button onclick="appendValue('8')">8</button>
-      <button onclick="appendValue('9')">9</button>
-      <button class="operator" onclick="appendValue('+')">+</button>
+    <!-- NAVBAR / SIDEBAR -->
+    <nav class="fixed left-0 top-0 z-50 w-full md:w-64 h-auto md:h-screen bg-dark-bg/95 backdrop-blur-md border-b md:border-b-0 md:border-r border-gray-800">
+        <div class="h-full px-6 py-4 md:py-8 flex flex-row md:flex-col justify-between md:justify-start">
+            <!-- Navigation Desktop -->
+            <div class="hidden md:flex flex-col gap-2 mt-20 text-sm font-semibold tracking-wide">
+                <a href="index.html" class="group px-4 py-3 border-l-2 border-transparent hover:border-white hover:bg-white/5 hover:text-gray-300 transition">
+                    HOME
+                </a>
+                <a href="about.html" class="group px-4 py-3 border-l-2 border-transparent hover:border-white hover:bg-white/5 hover:text-gray-300 transition">
+                    ABOUT
+                </a>
+                <a href="hobi.html" class="group px-4 py-3 border-l-2 border-transparent hover:border-white hover:bg-white/5 hover:text-gray-300 transition">
+                    HOBBY
+                </a>
+                <a href="hobi.html" class="group px-4 py-3 border-l-2 border-white bg-white/10 text-white transition">
+                    TASK CALCULATOR
+                </a>
+            </div>
 
-      <button onclick="appendValue('4')">4</button>
-      <button onclick="appendValue('5')">5</button>
-      <button onclick="appendValue('6')">6</button>
-      <button onclick="appendValue('.')">.</button>
+            <!-- Location / Year -->
+            <div class="hidden md:block mt-auto text-xs">
+                <p>EST. 2024</p>
+                <p class="text-gray-500">SINGARAJA, BALI</p>
+            </div>
 
-      <button onclick="appendValue('1')">1</button>
-      <button onclick="appendValue('2')">2</button>
-      <button onclick="appendValue('3')">3</button>
-      <button onclick="deleteLast()">⌫</button>
+            <!-- Mobile Navigation -->
+            <div class="flex md:hidden gap-4 text-xs font-semibold tracking-wide items-center">
+                <a href="index.html" class="hover:text-gray-400 transition">HOME</a>
+                <a href="about.html" class="hover:text-gray-400 transition">ABOUT</a>
+                <a href="education.html" class="hover:text-gray-400 transition">HOBBY</a>
+                <a href="kalkulator.html" class="text-yellow-400 font-bold transition">CALCULATOR</a>
+            </div>
 
-      <button onclick="appendValue('0')">0</button>
-      <button class="equal" onclick="calculate()">=</button>
-    </div>
-  </div>
+        </div>
+    </nav>
 
-  <script>
-    const display = document.getElementById("display");
+    <!-- CALCULATOR SECTION -->
+    <section class="pt-28 pb-20 px-6 min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
+        
+        <div class="max-w-md w-full relative z-10">
+            <!-- Header Title -->
+            <div class="text-center mb-8">
+                <p class="text-xs font-semibold tracking-widest text-yellow-400 uppercase mb-1">Interactive Tool</p>
+                <h1 class="font-anton text-4xl sm:text-5xl tracking-wide uppercase">
+                    CALCULATOR
+                </h1>
+            </div>
 
-    function appendValue(value) {
-      display.value += value;
-    }
+            <!-- Card Kalkulator -->
+            <div class="bg-white/5 border border-gray-800 rounded-3xl p-6 shadow-2xl backdrop-blur-md">
+                
+                <!-- Display -->
+                <div class="bg-black/60 border border-gray-800 rounded-2xl p-4 mb-6 text-right">
+                    <div id="previous-op" class="text-xs text-gray-500 min-h-[1.25rem] font-mono"></div>
+                    <div id="display" class="text-3xl font-bold tracking-wider font-mono text-white overflow-x-auto whitespace-nowrap">0</div>
+                </div>
 
-    function clearDisplay() {
-      display.value = "";
-    }
+                <!-- Tombol Kalkulator -->
+                <div class="grid grid-cols-4 gap-3 text-lg font-semibold">
+                    <button onclick="clearDisplay()" class="col-span-2 bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/30 py-3 rounded-xl transition">C</button>
+                    <button onclick="deleteLast()" class="bg-gray-800 hover:bg-gray-700 text-gray-300 py-3 rounded-xl transition"><i class="fa-solid fa-backspace"></i></button>
+                    <button onclick="appendSymbol('/')" class="bg-yellow-400/20 text-yellow-400 hover:bg-yellow-400/30 border border-yellow-400/30 py-3 rounded-xl transition">÷</button>
 
-    function deleteLast() {
-      display.value = display.value.slice(0, -1);
-    }
+                    <button onclick="appendNumber('7')" class="bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">7</button>
+                    <button onclick="appendNumber('8')" class="bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">8</button>
+                    <button onclick="appendNumber('9')" class="bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">9</button>
+                    <button onclick="appendSymbol('*')" class="bg-yellow-400/20 text-yellow-400 hover:bg-yellow-400/30 border border-yellow-400/30 py-3 rounded-xl transition">×</button>
 
-    function calculate() {
-      try {
-        display.value = eval(display.value);
-      } catch {
-        display.value = "Error";
-      }
-    }
-  </script>
+                    <button onclick="appendNumber('4')" class="bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">4</button>
+                    <button onclick="appendNumber('5')" class="bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">5</button>
+                    <button onclick="appendNumber('6')" class="bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">6</button>
+                    <button onclick="appendSymbol('-')" class="bg-yellow-400/20 text-yellow-400 hover:bg-yellow-400/30 border border-yellow-400/30 py-3 rounded-xl transition">-</button>
+
+                    <button onclick="appendNumber('1')" class="bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">1</button>
+                    <button onclick="appendNumber('2')" class="bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">2</button>
+                    <button onclick="appendNumber('3')" class="bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">3</button>
+                    <button onclick="appendSymbol('+')" class="bg-yellow-400/20 text-yellow-400 hover:bg-yellow-400/30 border border-yellow-400/30 py-3 rounded-xl transition">+</button>
+
+                    <button onclick="appendNumber('0')" class="col-span-2 bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">0</button>
+                    <button onclick="appendNumber('.')" class="bg-white/5 hover:bg-white/10 text-white py-3 rounded-xl transition">.</button>
+                    <button onclick="calculate()" class="bg-yellow-400 hover:bg-yellow-300 text-black font-bold py-3 rounded-xl transition">=</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Background Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-yellow-400/5 blur-3xl rounded-full z-0 pointer-events-none"></div>
+
+    </section>
+
+    <!-- LOGIKA KALKULATOR -->
+    <script>
+        const display = document.getElementById('display');
+        const previousOp = document.getElementById('previous-op');
+        let currentInput = '0';
+        let shouldResetDisplay = false;
+
+        function updateDisplay() {
+            display.innerText = currentInput;
+        }
+
+        function appendNumber(number) {
+            if (currentInput === '0' || shouldResetDisplay) {
+                currentInput = number;
+                shouldResetDisplay = false;
+            } else {
+                currentInput += number;
+            }
+            updateDisplay();
+        }
+
+        function appendSymbol(symbol) {
+            const lastChar = currentInput.slice(-1);
+            if (['+', '-', '*', '/'].includes(lastChar)) {
+                currentInput = currentInput.slice(0, -1) + symbol;
+            } else {
+                currentInput += symbol;
+            }
+            shouldResetDisplay = false;
+            updateDisplay();
+        }
+
+        function clearDisplay() {
+            currentInput = '0';
+            previousOp.innerText = '';
+            updateDisplay();
+        }
+
+        function deleteLast() {
+            if (currentInput.length === 1) {
+                currentInput = '0';
+            } else {
+                currentInput = currentInput.slice(0, -1);
+            }
+            updateDisplay();
+        }
+
+        function calculate() {
+            try {
+                previousOp.innerText = currentInput + ' =';
+                currentInput = eval(currentInput).toString();
+                shouldResetDisplay = true;
+            } catch (error) {
+                currentInput = 'Error';
+                shouldResetDisplay = true;
+            }
+            updateDisplay();
+        }
+    </script>
+
 </body>
 </html>
